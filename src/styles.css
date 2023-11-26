@@ -1,0 +1,70 @@
+/* You can add global styles to this file, and also import other style files */
+
+body { 
+    display: flex; 
+    min-height: 100vh; 
+    flex-direction: column; 
+} 
+
+.navbar-image {
+    height: 64px; /* Make the image take up the full height of the navbar */
+    width: auto; /* Maintain the image's aspect ratio */
+    padding: 10px; /* Add padding as needed */
+    background-color: aliceblue;
+}
+
+.serif {
+    font-family: Times, "Times New Roman", Georgia, serif;
+}
+
+.sansserif {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.monospace {
+    font-family: "Lucida Console", Courier, monospace;
+}
+
+.cursive {
+    font-family: cursive;
+}
+
+.fantasy {
+    font-family: fantasy;
+}
+
+.emoji {
+    font-family: emoji;
+}
+
+.math {
+    font-family: math;
+}
+
+.fangsong {
+    font-family: fangsong;
+}
+
+.parallax-container {
+    height: 300px;
+    align-items: center;
+}
+
+.parallax-container .parallax img{
+    object-fit: cover;
+    opacity: 1;
+}
+
+.search-wraps {
+    border: 0px solid white;
+    width: 60%;
+    margin: auto;
+    padding-top: 150px;
+    background-color: rgba(96, 82, 82, 0.383);
+}
+
+.parallax-container .search-wraps {
+    padding-top: 70px;
+    border: 0px solid red;
+}
+  

@@ -1,0 +1,9 @@
+form {
+    padding: 0 10px 10px 10px;
+}
+
+.card-panel {
+    height: 50px;
+    margin: 0.5rem 0 0.5rem 0;
+    padding: 10px;
+}

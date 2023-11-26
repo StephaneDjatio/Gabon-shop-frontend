@@ -1,0 +1,61 @@
+<nav class="deep-orange">
+    <div class="nav-wrapper container deep-orange">
+        <a href="#!" class="brand-logo">
+            <!-- <img src="../assets/images/Logo-AGEOS2.png" class="navbar-image" alt=""> -->
+            GABON e-Market
+        </a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#">Acceuil</a></li>
+            <li><a href="#">Tous les magasins</a></li>
+            <li><a href="#">Comparateur de prix</a></li>
+            <li><a href="#">Contact</a></li>
+            <li class="teal center"><a href="#!" class="dropdown-trigger" data-target="dropdown1"><i class="material-icons">person</i></a></li>
+        </ul>
+    </div>
+</nav>
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+    <li><a href="client/dashboard">Tableau de bord</a></li>
+    <li><a href="/client/profile">Mes coordonnées</a></li>
+    <li class="divider"></li>
+    <li><a href="/client/shopping-list">Mes factures</a></li>
+    <li class="divider"></li>
+    <li><a (click)="logout()">Déconnexion</a></li>
+</ul>
+<main>
+    <div class="parallax-container">
+        <div class="parallax"><img src="../../../assets/images/carousel/nrd-D6Tu_L3chLE-unsplash.jpg"></div>
+        <div class="search-wraps white-text center">
+            <h4>Bienvenue Mr / Mme {{ username }}</h4>
+            <p>Vous êtes connecté sur votre compte</p>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</main>
+
+<footer class="page-footer grey darken-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Footer Content</h5>
+          <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2023 Copyright 
+      <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+      </div>
+    </div>
+</footer>

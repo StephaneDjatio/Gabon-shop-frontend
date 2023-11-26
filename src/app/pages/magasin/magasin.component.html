@@ -1,0 +1,198 @@
+<app-layout></app-layout>
+<div class="parallax-container">
+    <div class="parallax"><img src="../../../assets/images/carousel/nrd-D6Tu_L3chLE-unsplash.jpg"></div>
+    <div class="search-wraps white-text center">
+        <img [src]="shopLogo" class="logo-magasin" alt="" >
+        <h4>{{ shopName }}</h4>
+        <p class="white-text">{{ shopDescription }}</p>
+    </div>
+</div>
+
+<section style="margin-left: 8%; margin-right: 8%;">
+    <div class="row">
+        <div class="col s12 m3">
+            <div class="card">
+                <div class="card-content black-text">
+                    <span class="card-title center" style="font-size: 18px; font-weight: bolder; font-style: italic;">Catégories</span>
+                    <div class="divider"></div><br>
+                    <div class="category">
+                        <a *ngFor="let item of shelves" (click)="goToShopShelveProducts(item.id)" class="goto-category">
+                            {{ item.shelve.shelve_name }}
+                            <span>(10)</span>
+                            <i class="material-icons right">keyboard_arrow_right</i>
+                        </a>
+                    </div>
+                    <!-- <a class="waves-effect waves-light btn blue-grey">Commander<i class="material-icons right">shopping_cart</i></a> -->
+                </div>
+            </div>
+            
+        </div>
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="card-content black-text">
+                    <h5 class="card-title center" style="font-weight: bolder; font-style: italic;">Produits</h5>
+                    <div class="divider"></div>
+                    <br>
+                    <div class="row">
+                        <!-- <h6 class="red-text"><b>Produits laitiers</b> </h6> -->
+                        <div class="divider"></div>
+                        <div *ngFor="let item of shopShelveProducts" class="col s6 m3" (click)="addProductToCart(item.id)" style="cursor: pointer;">
+                            <div class="card darken-1 z-depth-3">
+                                <div class="card-image">
+                                    <img [src]="apiUrl+''+item.product.product_image" class="responsive-img">
+                                    <!-- <span class="card-title">Nido 900g</span> -->
+                                </div>
+                                <div class="divider"></div>
+                                <div class="card-content product-label">
+                                    <p class="product-name truncate">{{ item.product.product_name }}</p>
+                                    <p class="product-price">{{ item.product_price }} FCFA</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <ul class="pagination center">
+                        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                        <li class="active"><a href="#!">1</a></li>
+                        <li class="waves-effect"><a href="#!">2</a></li>
+                        <li class="waves-effect"><a href="#!">3</a></li>
+                        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col s12 m3">
+            <div class="card">
+                <div class="star-float"></div>
+                <div class="card-content black-text center">
+                    <span class="card-title" style="font-size: 18px; font-weight: bolder; font-style: italic;">Informations sur la livraison</span>
+                    <p>Heure de livraison: 15h - 20h</p>
+                    <div class="divider"></div>
+                    
+                    <div class="row center" style="margin-top: 10%;">
+                        <div class="col m4 ">
+                            <i class="material-icons cart-icon red">shopping_cart</i>
+                        </div>
+                        <div class="col m8">
+                            <i class="center">Votre commande</i>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="cartList.length != 0">
+                        <div class="col m12 center cart-list">
+                            <div class="col m4 truncate">Produit</div>
+                            <div class="col m3">Qté</div>
+                            <div class="col m5">montant</div>
+                        </div>
+                        <div class="col m12 center cart-list" *ngFor="let item of cartList">
+                            <div class="col m4 truncate">{{ item.element.product.product_name }}</div>
+                            <div class="col m3">{{ item.count }}</div>
+                            <div class="col m5">{{ item.element.product_price * item.count }} FCFA</div>
+                            <div class="divider"></div>
+                        </div>
+                        <div class="col m12 center cart-list">
+                            <div class="col m4"></div>
+                            <div class="col m3">Total</div>
+                            <div class="col m5">{{ montantTotal }} FCFA</div>
+                        </div>
+                        <div class="col m12 center cart-list red-text">
+                            <div class="col m2"></div>
+                            <div class="col m5">Commissions(5%)</div>
+                            <div class="col m5">{{ commissions }} FCFA</div>
+                        </div>
+                        <div class="col m12 center cart-list red-text">
+                            <div class="col m2"></div>
+                            <div class="col m5">Livraison</div>
+                            <div class="col m5">3000 FCFA</div>
+                        </div>
+                        <div class="col m12 center cart-list teal-text">
+                            <div class="col m2"></div>
+                            <div class="col m5">Total TTC</div>
+                            <div class="col m5">{{ totalAPayer }} FCFA</div>
+                        </div>
+                        
+                    </div>
+                    <div class="row" *ngIf="cartList.length == 0">
+                        <div class="col m12 center">
+                            <p style="font-size: 12px;">Aucun produit ajouté dans la carte</p><br>
+                            <p style="font-size: 12px;">Le sous-total doit dépasser 5 000 FCFA</p>
+                        </div>
+                    </div>
+                    <div class="divider"></div><br>
+                    <p class="red-text" style="font-size: 12px;">La livraison est à 3 000 FCFA partout</p>
+                    <a class="waves-effect waves-light btn-small blue-grey pulse" (click)="showBill()">Commander<i class="material-icons right">shopping_cart</i></a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+<!-- Modal Structure -->
+<div id="clientBill" class="modal" style="height: auto;">
+    <div class="modal-content">
+        <div class="row">
+            <div class="col m12 center bill-header">
+                <h3 class="deep-orange-text cursive fantasy">GABON e-Market</h3>
+                <p>Adresse : Libreville</p>
+                <p>Tel : +241 77 77 77 77 / 66 66 66 66</p>
+                <p>Email: gabonemarket@gmail.com</p>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="row" *ngIf="cartList.length != 0">
+            <table class="table">
+                <thead>
+                    <th>Produit</th>
+                    <th>Quantité</th>
+                    <th>Prix unitaire</th>
+                    <th>Montant</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of cartList">
+                        <td>{{ item.element.product.product_name }}</td>
+                        <td>{{ item.count }}</td>
+                        <td>{{ item.element.product_price }} FCFA</td>
+                        <td>{{ item.element.product_price * item.count }} FCFA</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Montant total</td>
+                        <td>{{ montantTotal }} FCFA</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Commissions (5%)</td>
+                        <td>{{ commissions }} FCFA</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Livraison</td>
+                        <td>3000 FCFA</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Montant global</td>
+                        <td>{{ totalAPayer }} FCFA</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+        <div class="row" *ngIf="cartList.length == 0">
+            <div class="col m12 center">
+                <p style="font-size: 12px;">Aucun produit ajouté dans la carte</p><br>
+                <p style="font-size: 12px;">Le sous-total doit dépasser 5 000 FCFA</p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+</div>
+

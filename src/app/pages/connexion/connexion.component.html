@@ -1,0 +1,149 @@
+<app-layout></app-layout>
+<div class="parallax-container">
+    <div class="parallax"><img src="../../../assets/images/carousel/nrd-D6Tu_L3chLE-unsplash.jpg"></div>
+    <div class="search-wraps white-text center">
+        <h4>Se connecter ou s'inscrire</h4>
+        <p>s’enregistrer pour commencer à commander</p>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col m1"></div>
+        <div class="col s12 m10" *ngIf="hasAccount && hasPassword">
+            <div class="card z-depth-3">
+                <div class="card-panel center deep-orange accent-2">
+                    <!-- <i class="material-icons white-text" style="padding-right: 20px; font-size: 50px;">person</i> -->
+                    <span class="card-title white-text">Se connecter</span>
+                </div>
+                <form (ngSubmit)="onSubmitSignIn()" #signInForm="ngForm">
+                    <div class="input-field">
+                        <input type="email" class="validate" placeholder="Adresse email" name="email" #email="ngModel" [(ngModel)]="client.email" required>
+                        <div [hidden]="email.valid || email.pristine"
+                            class="red-text accent-1">
+                            L'email du client est requis ou incorrect.
+                        </div>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" class="validate" name="password" [(ngModel)]="client.password" placeholder="Mot de passe" required>
+                    </div>
+                    <div class="center">
+                        <button type="submit" class="btn-large deep-orange accent-2" [disabled]="!signInForm.form.valid">Connecter</button>
+                    </div><br>
+                    <div class="center">
+                        <a (click)="forgotPassword()" style="cursor: pointer;">Mot de passe oublié?</a>
+                    </div>
+                    <div class="center">
+                        <a (click)="signUp()" style="cursor: pointer;">Créer votre compte</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col s12 m10" *ngIf="!hasAccount">
+            <div class="card">
+                <div class="card z-depth-3">
+                    <div class="card-panel center deep-orange accent-2">
+                        <!-- <i class="material-icons white-text" style="padding-right: 20px; font-size: 50px;">person</i> -->
+                        <span class="card-title white-text">S'enregistrer</span>
+                    </div>
+                    <form (ngSubmit)="onSubmit()" #clientForm="ngForm">
+                        <div class="row">
+                            <div class="col s12 m6" style="border-right: 1px solid black;">
+                                <div class="input-field">
+                                    <input type="text" class="validate" placeholder="Nom" name="name" 
+                                    [(ngModel)]="client.name" #name="ngModel" required>
+                                    <div [hidden]="name.valid || name.pristine"
+                                        class="red-text accent-1">
+                                        Le nom du client est requis.
+                                    </div>
+                                </div>
+                                <div class="input-field">
+                                    <input type="text" class="validate" placeholder="Prénom" [(ngModel)]="client.surname" name="surname">
+                                </div>
+                                <div class="input-field">
+                                    <input type="number" class="validate" placeholder="Numéro de téléphone" [(ngModel)]="client.phone" name="phone" #phone="ngModel" required>
+                                    <div [hidden]="phone.valid || phone.pristine"
+                                        class="red-text accent-1">
+                                        Le numéro du client est requis.
+                                    </div>
+                                </div>
+                                <div class="input-field">
+                                    <input type="email" class="validate" placeholder="Adresse email" name="email" [(ngModel)]="client.email" #email="ngModel" required>
+                                    <div [hidden]="email.valid || email.pristine"
+                                        class="red-text accent-1">
+                                        L'email du client est requis ou incorrect.
+                                    </div>
+                                </div>
+                                <div class="input-field">
+                                    <select class="browser-default" name="municipality" [(ngModel)]="client.municipality" #municipality="ngModel" required="">
+                                        <option value="" selected>Choisir une commune</option>
+                                        <option *ngFor="let item of municipalities" [value]="item.id">{{ item.municipality_name }}</option>
+                                    </select>
+                                    <div [hidden]="municipality.valid || municipality.pristine"
+                                        class="red-text accent-1">
+                                        La commune du client est requise.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6">
+                                <div class="input-field">
+                                    <input type="text" class="validate" placeholder="Quartier" name="quarter" [(ngModel)]="client.quarter" #quarter="ngModel" required>
+                                    <div [hidden]="quarter.valid || quarter.pristine"
+                                        class="red-text accent-1">
+                                        Le quartier du client est requis.
+                                    </div>
+                                </div>
+                                <div class="input-field">
+                                    <input type="text" class="validate" placeholder="Adresse complète" name="address" [(ngModel)]="client.address" #address="ngModel" required>
+                                    <div [hidden]="address.valid || address.pristine"
+                                        class="red-text accent-1">
+                                        L'adresse du client est requis.
+                                    </div>
+                                </div>
+                                <div class="input-field">
+                                    <input type="password" class="validate" placeholder="Mot de passe" name="password" [(ngModel)]="client.password" required>
+                                </div>
+                                <div class="input-field">
+                                    <input type="password" class="validate" placeholder="confirmez votre mot de passe" name="confPassword" [(ngModel)]="client.confPassword" required>
+                                    <div *ngIf="!passwordsMatch()" class="red-text accent-1">
+                                        Les mots de passe ne correspondent pas.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="center">
+                            <button type="submit" class="btn-large deep-orange accent-2"
+                            [disabled]="!clientForm.form.valid || !passwordsMatch()">S'enregistrer</button>
+                        </div><br>
+                        <div class="center">
+                            <a (click)="signIn()" style="cursor: pointer;">Connectez-vous</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m10" *ngIf="hasAccount && !hasPassword">
+            <div class="card">
+                <div class="card z-depth-3">
+                    <div class="card-panel center deep-orange accent-2">
+                        <!-- <i class="material-icons white-text" style="padding-right: 20px; font-size: 50px;">person</i> -->
+                        <span class="card-title white-text">Mot de passe oublié?</span>
+                    </div>
+                    <form action="#">
+                        <div class="input-field">
+                            <input type="email" class="validate" placeholder="Adresse email" required>
+                        </div>
+                        <div class="center">
+                            <button type="submit" class="btn-large deep-orange accent-2">Récupérer mot de passe</button>
+                        </div><br>
+                        <div class="center">
+                            <a (click)="signIn()" style="cursor: pointer;">Connectez-vous</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col m1"></div>
+    </div>
+</div>

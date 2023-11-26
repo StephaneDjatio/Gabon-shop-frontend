@@ -1,0 +1,30 @@
+.list-magasin-container{
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+.info-magasin {
+    height: 150px;
+}
+
+.logo-magasin-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid black; */
+    height: 170px;
+}
+
+
+
+.logo-magasin {
+    height: 100px;
+    width: auto; 
+    border-radius: 50%;
+}
+
+hr {
+    border-color: cadetblue;
+    width: 90%;
+    background-color: cadetblue;
+}

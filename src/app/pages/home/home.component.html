@@ -1,0 +1,98 @@
+<app-layout></app-layout>
+<div class="carousel carousel-slider" data-indicators="true">
+    <!-- <div class="carousel-fixed-item center">
+        <a class="btn waves-effect white grey-text darken-text-2">button</a>
+    </div> -->
+    <a class="carousel-item" href="#one!"><img src="../../../assets/images/carousel/dennis-siqueira-QnMeRW36-zY-unsplash.jpg"></a>
+    <a class="carousel-item" href="#two!"><img src="../../../assets/images/carousel/fikri-rasyid-ezeC8-clZSs-unsplash.jpg"></a>
+    <a class="carousel-item" href="#three!"><img src="../../../assets/images/carousel/manny-becerra-0sihmMSmnoE-unsplash.jpg"></a>
+    <a class="carousel-item" href="#four!"><img src="../../../assets/images/carousel/nathalia-rosa-rWMIbqmOxrY-unsplash.jpg"></a>
+    <a class="carousel-item" href="#five!"><img src="../../../assets/images/carousel/nrd-D6Tu_L3chLE-unsplash.jpg"></a>
+</div>
+
+<div class="row">
+    <div class="col s12 m6">
+      <div class="card deep-orange darken-1 z-depth-3">
+        <div class="card-content white-text center">
+          <span class="card-title" style="font-size: 18px; font-weight: bolder; font-style: italic;">Offres spéciales</span>
+          <hr>
+          <div class="row">
+            <img src="../../../assets/images/offres/pub1.jpeg" class="col s6 m3 materialboxed">
+            <img src="../../../assets/images/offres/pub2.jpeg" class="col s6 m3 materialboxed">
+            <img src="../../../assets/images/offres/pub3.jpeg" class="col s6 m3 materialboxed">
+            <img src="../../../assets/images/offres/pub4.jpeg" class="col s6 m3 materialboxed">
+            <img src="../../../assets/images/offres/pub2.jpeg" class="col s6 m3 materialboxed" style="padding-top: 5px;">
+            <img src="../../../assets/images/offres/pub5.jpeg" class="col s6 m3 materialboxed" style="padding-top: 5px;">
+            <img src="../../../assets/images/offres/vin1.jpeg" class="col s6 m3 materialboxed" style="padding-top: 5px;">
+            <img src="../../../assets/images/offres/pub3.jpeg" class="col s6 m3 materialboxed" style="padding-top: 5px;">
+          </div>
+          <a class="waves-effect waves-light btn blue-grey pulse">Commander<i class="material-icons right">shopping_cart</i></a>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m6">
+        <div class="card deep-orange darken-1 z-depth-3">
+            <div class="card-content white-text center">
+                <span class="card-title" style="font-size: 18px; font-weight: bolder; font-style: italic;">Promotions</span>
+                <hr>
+                <div class="row">
+                    <img src="../../../assets/images/offres/pub1.jpeg" class="col s6 m3 materialboxed">
+                    <img src="../../../assets/images/offres/pub2.jpeg" class="col s6 m3 materialboxed">
+                    <img src="../../../assets/images/offres/pub3.jpeg" class="col s6 m3 materialboxed">
+                    <img src="../../../assets/images/offres/pub4.jpeg" class="col s6 m3 materialboxed">
+                    <img src="../../../assets/images/offres/pub2.jpeg" class="col s6 m3 materialboxed" style="padding-top: 5px;">
+                    <img src="../../../assets/images/offres/pub5.jpeg" class="col s6 m3 materialboxed" style="padding-top: 5px;">
+                    <img src="../../../assets/images/offres/vin1.jpeg" class="col s6 m3 materialboxed" style="padding-top: 5px;">
+                    <img src="../../../assets/images/offres/pub3.jpeg" class="col s6 m3 materialboxed" style="padding-top: 5px;">
+                </div>
+                <a class="waves-effect waves-light btn blue-grey pulse">Commander<i class="material-icons right">shopping_cart</i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12 m12">
+      <div class="card blue-grey darken-1 z-depth-3">
+        <div class="card-content white-text center">
+          <span class="card-title" style="font-size: 30px; font-weight: bolder;">MAGASINS A LA UNE</span>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="list-magasin-container">
+    <div class="row">
+        <div *ngFor="let item of items" (click)="selectShop(item)" style="cursor: pointer;">
+            <div class="col s12 m6" style="padding: 2%;">
+                <div class="row info-magasin card">
+                  <div class="col s12 m3 logo-magasin-div">
+                      <img [src]="apiUrl+'/'+item.shop_logo" class="logo-magasin responsive-img" alt="">
+                  </div>
+                  <div class="col s12 m9">
+                      <h5>{{ item.shop_name }}</h5>
+                      <p>{{ item.shop_description }}</p>
+                      <p class="truncate">{{ item.shop_address }}</p>
+                  </div>
+                </div>
+                <div class="divider"></div>
+            </div>
+        </div>
+        <!-- <div class="col s12 m6">
+          <div class="row info-magasin">
+            <div class="col s12 m3 logo-magasin-div">
+                <img src="../assets/images/CECADO.png" class="navbar-image logo-magasin" alt="">
+            </div>
+            <div class="col s12 m9">
+                <h5>CECADO</h5>
+                <p class="truncate">Distributeur agro-alimentaire</p>
+                <p>Camp de Police (Bord de Mer), Okala, SNI, IAI Golf, Bikélé, 
+                    Owendo (Zone Portuaire), Bas de GuéGué, Damas et Nzeng Ayong 2176 Libreville, Gabon</p>
+            </div>
+          </div>
+          <hr>
+        </div> -->
+    </div>
+</div>
+
+

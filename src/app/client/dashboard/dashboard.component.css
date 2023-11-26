@@ -1,0 +1,15 @@
+.card-panel {
+    cursor: pointer;
+}
+
+.card-panel .material-icons {
+    font-size: 50px;
+}
+
+.card-panel .title-panel {
+    font-size: 25px;
+}
+
+.card-panel .total {
+    font-size: 35px;
+}

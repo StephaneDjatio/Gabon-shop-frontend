@@ -1,0 +1,26 @@
+<nav class="deep-orange">
+    <div class="nav-wrapper container deep-orange">
+        <a href="#!" class="brand-logo">
+            <!-- <img src="../assets/images/Logo-AGEOS2.png" class="navbar-image" alt=""> -->
+            GABON e-Market
+        </a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#">Acceuil</a></li>
+            <li><a href="#">Tous les magasins</a></li>
+            <li><a href="#">Comparateur de prix</a></li>
+            <li><a href="#">Contact</a></li>
+            <li *ngIf="!isConnected"><a href="/signup">Se connecter ou s'inscrire</a></li>
+            <li class="teal center" *ngIf="isConnected"><a href="#!" class="dropdown-trigger" data-target="dropdown1"><i class="material-icons">person</i></a></li>
+        </ul>
+    </div>
+</nav>
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+    <li><a href="client/dashboard">Tableau de bord</a></li>
+    <li><a href="/client/profile">Mes coordonnées</a></li>
+    <li class="divider"></li>
+    <li><a href="/client/shopping-list">Mes factures</a></li>
+    <li class="divider"></li>
+    <li><a (click)="logout()">Déconnexion</a></li>
+</ul>
