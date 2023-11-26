@@ -1,0 +1,40 @@
+{
+    "menus": [
+        {
+            "id": 1,
+            "text": "Données risques",
+            "icon": "report_problem",
+            "roles":["Administrateur", "Opérateur"]
+        },
+        {
+            "id": 2,
+            "text": "Limites administratives",
+            "icon": "linear_scale",
+            "roles":["Administrateur", "Opérateur"]
+        },
+        {
+            "id": 3,
+            "text": "Infrastructures",
+            "icon": "home",
+            "roles":["Administrateur", "Opérateur"]
+        },
+        {
+            "id": 4,
+            "text": "Milieux naturels",
+            "icon": "nature",
+            "roles":["Administrateur", "Opérateur"]
+        },
+        {
+            "id": 5,
+            "text": "Données historiques",
+            "icon": "pin_drop",
+            "roles":["Administrateur", "Opérateur"]
+        },
+        {
+            "id": 6,
+            "text": "Gestion des utilisateurs",
+            "icon": "supervisor_account",
+            "roles":["Administrateur"]
+        }
+    ]
+}
